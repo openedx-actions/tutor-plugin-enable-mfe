@@ -54,9 +54,9 @@ jobs:
       shell: bash
 
     # This action.
-      - name: Enable tutor plugin - MFE
-        uses: openedx-actions/tutor-enable-plugin-mfe@v0.0.1
-        if: ${{ env.ENABLE_MFE == 'true' }}
-        with:
-          aws-ecr-uri: 123456789012.dkr.ecr.us-east-2.amazonaws.com/openedx_mfe:latest
+    - name: Enable tutor plugin - MFE
+      uses: openedx-actions/tutor-enable-plugin-mfe@v0.0.1
+      if: ${{ env.ENABLE_MFE == 'true' }}
+      with:
+        aws-ecr-uri: 123456789012.dkr.ecr.us-east-2.amazonaws.com/openedx_mfe:latest
 ```
