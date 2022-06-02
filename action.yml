@@ -1,0 +1,27 @@
+#------------------------------------------------------------------------------
+# usage: Use tutor to enable the Open edX Micro Front-end service plugin
+#------------------------------------------------------------------------------
+name: enable MFE plugin for tutor
+description: Github Action to install and enable the Tutor plugin - Open edX Micro Front-end (MFE) service
+branding:
+  icon: 'cloud'
+  color: 'orange'
+inputs:
+  aws-ecr-uri:
+    description: 'The URI for the AWS ECR repository. Example: 621672204142.dkr.ecr.us-east-2.amazonaws.com/openedx_mfe:latest'
+    required: true
+    type: string
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v3.0.2
+
+    - name: Enable the MFE plugin
+      run: |-
+        pip install tutor-mfe
+        tutor plugins enable mfe
+        tutor config save --set MFE_DOCKER_IMAGE=${{ inputs.aws-ecr-uri }} \
+                          --set MFE_ENABLE_HTTPS=true
+      shell: bash
