@@ -40,6 +40,15 @@ jobs:
       - name: Configure Github workflow environment
         uses: openedx-actions/tutor-k8s-init@v0.0.1
 
+      # Build the Micro Front-end container
+      - name: Build the image and upload to AWS ECR
+        uses: openedx-actions/tutor-plugin-build-mfe@0.1.1
+        with:
+          aws-ecr-repository: openedx_mfe
+          subdomain: 'www'
+          domain-name: 'example.com'
+          site-name: 'School of Rock'
+
       # This action.
       - name: Enable tutor plugin - MFE
         uses: openedx-actions/tutor-enable-plugin-mfe@v0.0.1
