@@ -9,6 +9,8 @@
 
 # tutor-plugin-enable-backup
 
+**DEPRECATED** tutor version 14.x and newer includes a managed build of mfe. Hereon, you should use the managed container.
+
 Github Action to install and enable the Tutor plugin - Open edX Micro Front-end (MFE) service
 
 
